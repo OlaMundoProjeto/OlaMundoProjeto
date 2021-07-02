@@ -26,7 +26,7 @@ public class Tema {
 	
 	@NotNull
 	@Size(min = 2, max = 15)
-	private String palavra_chave;
+	private String palavraChave;
 
 	public long getId() {
 		return id;
@@ -52,12 +52,12 @@ public class Tema {
 		this.ambientacao = ambientacao;
 	}
 
-	public String getPalavra_chave() {
-		return palavra_chave;
+	public String getPalavraChave() {
+		return palavraChave;
 	}
 
-	public void setPalavra_chave(String palavra_chave) {
-		this.palavra_chave = palavra_chave;
+	public void setPalavraChave(String palavraChave) {
+		this.palavraChave = palavraChave;
 	}
 	
 	
