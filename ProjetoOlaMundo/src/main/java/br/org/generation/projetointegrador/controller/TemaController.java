@@ -37,9 +37,9 @@ public class TemaController {
 		return repository.findById(id).map(resp->ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/temaPostagem/{temaPostagem}")
-	public ResponseEntity<List<Tema>> GetByTemaPostagem(@PathVariable String temaPostagem){
-		return ResponseEntity.ok(repository.findAllByTemaPostagemContainingIgnoreCase(temaPostagem));
+	@GetMapping("/temapostagem/{temapostagem}")
+	public ResponseEntity<List<Tema>> GetByTemaPostagem(@PathVariable String temapostagem){
+		return ResponseEntity.ok(repository.findAllByTemaPostagemContainingIgnoreCase(temapostagem));
 		
 	}
 	
@@ -48,9 +48,9 @@ public class TemaController {
 		return ResponseEntity.ok(repository.findAllByAmbientacaoContainingIgnoreCase(ambientacao));
 	}
 	
-	@GetMapping("/palavraChave/{palavraChave}")
-	public ResponseEntity<List<Tema>> GetByPalavraChave(@PathVariable String palavraChave ){
-		return ResponseEntity.ok(repository.findAllByPalavraChaveContainingIgnoreCase(palavraChave));
+	@GetMapping("/palavrachave/{palavrachave}")
+	public ResponseEntity<List<Tema>> GetByPalavraChave(@PathVariable String palavrachave ){
+		return ResponseEntity.ok(repository.findAllByPalavraChaveContainingIgnoreCase(palavrachave));
 	}
 	
 	@PostMapping
@@ -68,3 +68,4 @@ public class TemaController {
 		repository.deleteById(id);
 	}
 }
+

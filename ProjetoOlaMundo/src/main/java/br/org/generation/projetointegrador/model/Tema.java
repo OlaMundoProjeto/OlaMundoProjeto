@@ -25,7 +25,7 @@ public class Tema {
 	private String ambientacao; // area interna e externa
 	
 	@NotNull
-	@Size(min = 2, max = 15)
+	@Size(min = 2, max = 50)
 	private String palavraChave;
 
 	public long getId() {

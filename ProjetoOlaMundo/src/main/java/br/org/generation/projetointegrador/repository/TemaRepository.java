@@ -10,10 +10,10 @@ import br.org.generation.projetointegrador.model.Tema;
 @Repository
 public interface TemaRepository extends JpaRepository <Tema, Long>{
 	
-	public List<Tema> findAllByTemaPostagemContainingIgnoreCase (String temaPostagem);
+	public List<Tema> findAllByTemaPostagemContainingIgnoreCase (String temapostagem);
 	
 	public List<Tema> findAllByAmbientacaoContainingIgnoreCase(String ambientacao);
 	
-	public List<Tema> findAllByPalavraChaveContainingIgnoreCase (String palavraChave);
+	public List<Tema> findAllByPalavraChaveContainingIgnoreCase (String palavrachave);
 
 }
