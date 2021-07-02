@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_temaOlaMundo")
-public class Tema_OlaMundo {
+@Table(name = "tb_tema")
+public class Tema {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Tema_OlaMundo {
 	
 	@NotNull
 	@Size(min = 2, max = 15)
-	private String tema_da_postagem;
+	private String temaPostagem;
 	
 	@NotNull
 	@Size(min = 2, max = 50)
@@ -36,12 +36,12 @@ public class Tema_OlaMundo {
 		this.id = id;
 	}
 
-	public String getTema_da_postagem() {
-		return tema_da_postagem;
+	public String getTemaPostagem() {
+		return temaPostagem;
 	}
 
-	public void setTema_da_postagem(String tema_da_postagem) {
-		this.tema_da_postagem = tema_da_postagem;
+	public void setTemaPostagem(String temaPostagem) {
+		this.temaPostagem = temaPostagem;
 	}
 
 	public String getAmbientacao() {
