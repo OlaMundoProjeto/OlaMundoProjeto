@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,14 +20,19 @@ public class Postagem {
 	
 	private long id_usuario;
 	
+	@NotNull
 	private long tipoPostagem;
 	
+	@NotNull
 	private String titulo;
 	
+	@NotNull
 	private String texto;
 	
+	@NotNull
 	private String agenda; // horario de funcionamento
 	
+	@NotNull
 	private String contato;
 	
 	@ManyToOne
@@ -99,6 +105,14 @@ public class Postagem {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	} 
 	
 }
