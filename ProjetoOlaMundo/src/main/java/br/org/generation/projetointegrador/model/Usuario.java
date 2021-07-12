@@ -1,5 +1,6 @@
 package br.org.generation.projetointegrador.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,12 +22,24 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; 
-
+	
+	@NotNull
+	@Size(min=4, max=50)
 	private String nome;
 	
+	@NotNull
+	@Size(min=4, max=50)
 	private String email;
 	
+	@NotNull
+	@Size(min=4, max=50)
+	private String usuario;
+	
+	@NotNull
+	@Size(min=4)
 	private String senha;
+	
+	private Date dataAniversario;
 	
 	private String foto;
 	
@@ -70,6 +85,23 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public Date getDataAniversario() {
+		return dataAniversario;
+	}
+
+	public void setDataAniversario(Date dataAniversario) {
+		this.dataAniversario = dataAniversario;
 	}
 
 	public List<Postagem> getPostagem() {
