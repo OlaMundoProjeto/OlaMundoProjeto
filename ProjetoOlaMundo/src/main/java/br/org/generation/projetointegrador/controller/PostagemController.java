@@ -17,63 +17,83 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.generation.projetointegrador.model.Postagem;
 import br.org.generation.projetointegrador.repository.PostagemRepository;
+import br.org.generation.projetointegrador.service.PostagemService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/postagem")
 public class PostagemController {
-	
-@Autowired
-private PostagemRepository repository;
 
-@GetMapping
-public ResponseEntity<List<Postagem>> GetAll() {
-	return ResponseEntity.ok(repository.findAll());
-}
-@GetMapping("/{id}")
+	@Autowired
+	private PostagemRepository repository;
+	
+	@Autowired
+	private PostagemService postagemService;
 
-public ResponseEntity<Postagem> GetById(@PathVariable long id) {
-	return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	
-}
-@GetMapping("/titulo/{titulo}")
-public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
-	return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
-	
-}
-@GetMapping("/texto/{texto}")
-public ResponseEntity<List<Postagem>> GetByTexto(@PathVariable String texto) {
-	return ResponseEntity.ok(repository.findAllByTextoContainingIgnoreCase(texto));
-	
-} 
-@GetMapping("/agenda/{agenda}")
-public ResponseEntity<List<Postagem>> GetByAgenda(@PathVariable String agenda) {
-	return ResponseEntity.ok(repository.findAllByAgendaContainingIgnoreCase(agenda));
-	
-}
+	@GetMapping
+	public ResponseEntity<List<Postagem>> GetAll() {
+		return ResponseEntity.ok(repository.findAll());
+	}
 
-@GetMapping("/contato/{contato}")
-public ResponseEntity<List<Postagem>> GetByContato(@PathVariable String contato) {
-	return ResponseEntity.ok(repository.findAllByContatoContainingIgnoreCase(contato)); 
-	
-} 
+	@GetMapping("/{id}")
 
-@PostMapping
-public ResponseEntity<Postagem> post (@RequestBody Postagem postagem) {
-	return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
-	
-	
-}
+	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 
-@PutMapping
-public ResponseEntity<Postagem> put (@RequestBody Postagem postagem) {
-	return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
-	
-}
+	}
 
-@DeleteMapping("/{id}")
-public void delete(@PathVariable long id) {
-	repository.deleteById(id);
-}
-}
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 
+	}
+
+	@GetMapping("/texto/{texto}")
+	public ResponseEntity<List<Postagem>> GetByTexto(@PathVariable String texto) {
+		return ResponseEntity.ok(repository.findAllByTextoContainingIgnoreCase(texto));
+
+	}
+
+	@GetMapping("/agenda/{agenda}")
+	public ResponseEntity<List<Postagem>> GetByAgenda(@PathVariable String agenda) {
+		return ResponseEntity.ok(repository.findAllByAgendaContainingIgnoreCase(agenda));
+
+	}
+
+	@GetMapping("/contato/{contato}")
+	public ResponseEntity<List<Postagem>> GetByContato(@PathVariable String contato) {
+		return ResponseEntity.ok(repository.findAllByContatoContainingIgnoreCase(contato));
+
+	}
+
+	@PostMapping
+	public ResponseEntity<Postagem> post(@RequestBody Postagem postagem) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
+
+	}
+
+	@PutMapping
+	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem) {
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
+
+	}
+
+	@PutMapping("/curtir/{id}") // metodo para curtir postagem
+	public ResponseEntity<Postagem> putCurtirPostagemId(@PathVariable Long id) {
+
+		return ResponseEntity.status(HttpStatus.OK).body(postagemService.curtir(id));
+
+	}
+
+	@PutMapping("/descurtir/{id}") // metodo para descurtir postagem
+	public ResponseEntity<Postagem> putDescurtirPostagemId(@PathVariable Long id) {
+
+		return ResponseEntity.status(HttpStatus.OK).body(postagemService.descurtir(id));
+
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable long id) {
+		repository.deleteById(id);
+	}
+}
