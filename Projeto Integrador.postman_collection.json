@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "76d6ec27-a111-4fbb-8932-e4be061d44d4",
+		"name": "Projeto Integrador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Postagem",
+			"item": [
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tema",
+			"item": []
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Logar",
+					"item": [
+						{
+							"name": "Logar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "$2a$10$TDwLijpzK200UQkCYO/MdO0c4VuQqod1RZZJ7uo4S/ebknxwP4ilW",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n    \"senha\" : \"123457\",\r\n    \"usuario\" : \"Gab708\"\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/usuarios/logar"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cadastro",
+					"item": [
+						{
+							"name": "Cadastro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\" : \"Gabs\",\r\n    \"email\" : \"gabsaranha.get@email.com\",\r\n    \"senha\" : \"123457\",\r\n    \"usuario\" : \"Gab708\"\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/usuarios/cadastrar"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atualizar_Usuarios",
+					"item": [
+						{
+							"name": "Atualizar_Usuarios",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic UGFtNzA4OjEyMzQ1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : \"4\",\r\n    \"nome\" : \"Gabs\",\r\n    \"email\" : \"aranha.get@email.com\",\r\n    \"senha\" : \"123457\",\r\n    \"usuario\" : \"Gab708\"\r\n\r\n}\r\n\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/usuarios/alterar"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ID",
+					"item": [
+						{
+							"name": "ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic R2FiNzA4OjEyMzQ1Nw==",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:8080/usuarios/4"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Nome",
+					"item": [
+						{
+							"name": "Nome",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic R2FiNzA4OjEyMzQ1Nw==",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:8080/usuarios/nome/a"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
