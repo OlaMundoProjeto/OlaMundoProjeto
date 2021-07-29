@@ -6,14 +6,25 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { QuemsomosComponent } from './quemsomos/quemsomos.component';
+import { EntrarComponent } from './entrar/entrar.component';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { ExplorarComponent } from './explorar/explorar.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { LayoutFeedComponent } from './layout-feed/layout-feed.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     RodapeComponent,
-    QuemsomosComponent
-  ],
+    QuemsomosComponent,
+    EntrarComponent,
+    CadastrarComponent,
+    ExplorarComponent,
+    PerfilComponent,
+    LayoutFeedComponent
+  ],  
   imports: [
     BrowserModule,
     AppRoutingModule
