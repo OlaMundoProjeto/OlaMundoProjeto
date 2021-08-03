@@ -10,7 +10,7 @@ import { QuemsomosComponent } from './quemsomos/quemsomos.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'layout-feed', pathMatch: 'full'}, // página inicial: caminho vazio = aba entrar! - pathMatch = compatibilidade total.
+  {path: '', redirectTo: 'cadastrar', pathMatch: 'full'}, // página inicial: caminho vazio = aba entrar! - pathMatch = compatibilidade total.
   {path: 'entrar', component: EntrarComponent}, // path da página entrar. Atentar-se a não colocar / antes do caminho.
   {path: 'cadastrar', component: CadastrarComponent}, // path da página cadastrar. Atentar-se a não colocar / antes do caminho.
   {path: 'explorar', component: ExplorarComponent}, // path da página explorar.
