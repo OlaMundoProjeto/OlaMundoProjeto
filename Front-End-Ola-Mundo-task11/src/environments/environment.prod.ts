@@ -4,7 +4,8 @@ export const environment = {
   token: '',
   nome: '',
   usuario: '',
-  foto: ''
+  foto: '',
+  id: 0
 };
 
 // nunca atualizamos uma single page app. n tem pq atualizar.

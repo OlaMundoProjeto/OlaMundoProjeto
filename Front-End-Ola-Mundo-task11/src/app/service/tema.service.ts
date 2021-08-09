@@ -24,17 +24,17 @@ export class TemaService {
     return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/${id}` , this.token)
   }
 
-  // getByTemaPostagem(tema: Tema): Observable<Tema>{
-  //   return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/temapostagem/${String}` , this.token)
-  // }
+  getByTemaPostagem(tema: Tema): Observable<Tema>{
+     return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/temapostagem/${String}` , this.token)
+   }
 
-  // getByAmbientacao(tema: Tema): Observable<Tema>{
-  //   return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/ambientacao/${String}` , this.token)
-  // }
+   getByAmbientacao(tema: Tema): Observable<Tema>{
+   return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/ambientacao/${String}` , this.token)
+ }
 
-  // getByPalavraChave(tema: Tema): Observable<Tema>{
-  //   return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/tema/palavrachave/${String}` , this.token)
-  // }
+  getByPalavraChave(tema: Tema): Observable<Tema>{
+     return this.http.get<Tema>(`https://olamundoprojeto.herokuapp.com/tema/tema/palavrachave/${String}` , this.token)
+  }
 
   postTema(tema: Tema): Observable<Tema>{
     return this.http.post<Tema> ('https://olamundoprojeto.herokuapp.com/tema', tema ,this.token)
