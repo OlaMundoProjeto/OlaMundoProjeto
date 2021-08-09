@@ -22,7 +22,11 @@ export class AuthService {
     return this.http.post<User>("https://olamundoprojeto.herokuapp.com/usuarios/cadastrar", usuario)
 
   }
+  getByIdUsuario(id: number): Observable<User>{
+    return this.http.get<User>(`https://olamundoprojeto.herokuapp.com/usuarios/${id}`)
+  }
 
+// logado
   logado(){
     let ok: boolean = false
 
@@ -32,7 +36,15 @@ export class AuthService {
       return ok
 
     }
+
+    // atualizar
+    atualizar (usuario: User): Observable<User>{
+      return this.http.put<User>('https://olamundoprojeto.herokuapp.com/usuarios/alterar', usuario)
+    }
+  
+    
   }
+  
     // criando variavel OK determinando que é booleana e falsa.
     // retornando ok = retornando falso. significa que o método está retornando um boolean.
     // começa com o OK falso e caso seja diferente de vazio = verdadeiro.

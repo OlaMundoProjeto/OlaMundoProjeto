@@ -30,6 +30,7 @@ export class EntrarComponent implements OnInit {
       environment.nome = this.usuarioLogin.nome
       environment.foto = this.usuarioLogin.foto
       environment.usuario = this.usuarioLogin.usuario
+      environment.id = this.usuarioLogin.id
 
 
       console.log(environment.token)

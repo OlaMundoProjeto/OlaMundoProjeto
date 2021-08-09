@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -17,6 +18,7 @@ export class LayoutFeedComponent implements OnInit {
 
   nome = environment.nome
   foto = environment.foto
+  id = environment.id
   postagem: Postagem= new Postagem()
   listaPostagem: Postagem[]
 
@@ -31,7 +33,8 @@ export class LayoutFeedComponent implements OnInit {
   constructor(
     private router: Router,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private authService: AuthService,
 
   ) { }
 
@@ -50,6 +53,7 @@ export class LayoutFeedComponent implements OnInit {
   getAllTemas(){
     this.temaService.getAllTema().subscribe((resp: Tema[])=>{
       this.listaTemas = resp
+    
     })
   }
 
@@ -64,6 +68,12 @@ export class LayoutFeedComponent implements OnInit {
       this.tema = resp
     })
   }
+  findByIdUsuario(){
+    this.authService.getByIdUsuario(this.idUser).subscribe((resp: User)=>{
+      this.user = resp
+    })
+  }
+
 
 
   publicar(){
@@ -72,7 +82,9 @@ export class LayoutFeedComponent implements OnInit {
 
     this.user.id = this.idUser
     this.postagem.usuario = this.user
+    this.postagem.tipoPostagem = 5
 
+    console.log(this.postagem)
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=>{
       this.postagem =  resp
       alert('Postagem realizada com sucesso!')

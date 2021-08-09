@@ -6,7 +6,7 @@
       <h3 class="text-menu-feed"> Perfil</h3>
       <img class="img-perfil" src="{{foto}}" alt="foto do usuario">
       <p class="m-0 font-weight-bold text-white fontsize16"> {{nome}}</p>
-      <button type="button" class="btn btn-secondary btn-personalizado " routerLink="/perfil">Editar</button>
+      <button type="button" class="btn btn-secondary btn-personalizado " [routerLink]="['/usuario-edit' , id]">Editar</button>
     </div>
     <!-- tema e postagem -->
     <div class=" col-md-4 caixa-postagens d-flex align-items-center flex-column borda">
@@ -20,7 +20,7 @@
           Postagem</button>
         <button type="button" class="btn btn-secondary btn-personalizado2 mb-2" href="#todasPostagens">Todas
           as Postagens</button>
-        <button type="button" class="btn btn-secondary btn-personalizado2 mb-2">Minhas Postagens</button>
+        <button type="button" (click)='findByIdUsuario()' class="btn btn-secondary btn-personalizado2 mb-2" href="#minhasPostagens">Minhas Postagens</button>
         <button type="button" class="btn btn-secondary btn-personalizado2 mb-2" routerLink=''>Postagens por
           tema</button>
       </div>
@@ -49,14 +49,51 @@
                       <div class="card-body">
                         <h5 class="card-title">{{item.titulo}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{item.usuario.nome}}</h6>
+                        <p class="">{{item.tema.temaPostagem}}</p>
                         <p class="card-text">{{item.texto}}</p>
                         <p class="card-text">{{item.agenda}}</p>
                         <p class="card-text">{{item.contato}}</p>
                         <p class="">{{item.data | date: 'dd/MM/yyyy'}}</p>
-                        <p class="">{{item.tema.temaPostagem}}</p>
+            
                       </div>
                     </div>
                   </div>
+                  <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="minhasPostagens-tab">
+
+                    <div class="card-columns">
+                      <div class="card"  style="width: 18rem;" *ngFor='let item of user.postagem'>
+                        <div class="card-body">
+                          <h5 class="card-title">{{item.titulo}}</h5>
+                          <p class="">{{item.tema.temaPostagem}}</p>
+                          <p class="card-text">{{item.texto}}</p>
+                          <p class="card-text">{{item.agenda}}</p>
+                          <p class="card-text">{{item.contato}}</p>
+                          <p class="">{{item.data | date: 'dd/MM/yyyy'}}</p>
+                          <button [routerLink]="['/postagem-edit', item.id]" type="button" class="btn btn-outline-success mr-3">Editar</button>
+                          <button [routerLink]="['/postagem-delete', item.id]" type="button" class="btn btn-outline-danger">Apagar</button>
+              
+                        </div>
+                      </div>
+                    </div>
+
+              
+                  </div>
+
+                <div class="card-columns" *ngFor='let tema of listaTemas'>
+                  <div class="card"  style="width: 18rem;"  *ngFor='let item of tema.postagem'>
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.titulo}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{item.usuario.nome}}</h6>
+                      <p class="">{{item.tema.temaPostagem}}</p>
+                      <p class="card-text">{{item.texto}}</p>
+                      <p class="card-text">{{item.agenda}}</p>
+                      <p class="card-text">{{item.contato}}</p>
+                      <p class="">{{item.data | date: 'dd/MM/yyyy'}}</p>
+          
+                    </div>
+                  </div>
+                </div>
+            
             
 
 
@@ -85,11 +122,6 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" >
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="novapostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -104,7 +136,7 @@
 
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo" placeholder="Digite o título">
+          <input [(ngModel)]='postagem.titulo' type="text" class="form-control" name="titulo" id="titulo" placeholder="Digite o título">
         </div> 
 
         <div class="form-group">
@@ -115,13 +147,13 @@
 
         <div class="form-group">
           <label for="agenda">Agenda</label>
-          <input [(ngModel)]='postagem.agenda' type="text" class="form-control" id="agenda"
+          <input [(ngModel)]='postagem.agenda' type="text" class="form-control"name="agenda"  id="agenda"
             placeholder="Digite o horário de funcionamento (ex:Seg. a Sex. das 12:00 a 00:00)">
         </div>
 
         <div class="form-group">
           <label for="contato">Contato</label>
-          <input [(ngModel)]='postagem.contato' type="text" class="form-control" id="contato"
+          <input [(ngModel)]='postagem.contato' type="text" class="form-control" name="contato" id="contato"
             placeholder="Insira o contato aqui (ex:Telefone,e-mail,site)">
         </div>
 
