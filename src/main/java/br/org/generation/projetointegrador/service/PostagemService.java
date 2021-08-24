@@ -13,7 +13,7 @@ public class PostagemService {
 		@Autowired
 		private PostagemRepository postagemRepository;
 
-		public Postagem curtir(Long id) { // regra de negocio para curtir postagem
+		public Postagem curtir(Long id) { // Regra de negocio para curtir postagem
 			Postagem postagem = buscarPostagemPeloId(id);
 			postagem.setCurtidas(postagem.getCurtidas() + 1);
 			return postagemRepository.save(postagem);
